@@ -33,7 +33,6 @@ sm.getSportGenre();
 sm2.getSportGenre();
 sm3.getSportGenre();
 
-
 // create localhost server
 app.get('/', function(req, res) {
     res.send(JSON.stringify(logger)); // display the log array as JSON

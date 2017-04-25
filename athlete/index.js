@@ -42,7 +42,6 @@ module.exports = class sportsManagement extends EventEmitter{
         this.emit(eventsConfig.showGenre);
     }
 
-
     // callback functions
     showScoreChanged() {
         var scoreChangedMsg = `${this.name} now has ${this.stats} points remaining`;

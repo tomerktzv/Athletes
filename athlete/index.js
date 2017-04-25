@@ -1,11 +1,9 @@
 'use strict';
 
 var EventEmitter = require('events'),
-    logger = require('../logger').logger,
-    // logger = require('../index').logger,
+    logger = require('../index').logger,
     eventsConfig = require('../config').events;
 
-// var check = `removing ${this.penalty} points from ${this.name}`;
 
 
 module.exports = class sportsManagement extends EventEmitter{
@@ -19,21 +17,23 @@ module.exports = class sportsManagement extends EventEmitter{
     }
 
     removeScore(penalty) {
+        var penaltyMsg = `removing ${penalty} points from ${this.name}`;
         if (penalty > this.stats) {
             this.emit(eventsConfig.scoreNotChanged); // initiate Emit event
             return;
         }
         this.stats -= penalty;
-        console.log(`removing ${penalty} points from ${this.name}`);
-        logger.push(`removing ${penalty} points from ${this.name}`); //
+        console.log(penaltyMsg);
+        logger.push(penaltyMsg); //
         console.log('------------------');
         this.emit(eventsConfig.scoreChanged); // initiate Emit event
     }
 
     addScore(points) {
+        var addMsg = `adding ${points} points to ${this.name}`;
         this.stats += points;
-        console.log(`adding ${points} points to ${this.name}`);
-        logger.push(`adding ${points} points to ${this.name}`);
+        console.log(addMsg);
+        logger.push(addMsg);
         console.log('------------------');
         this.emit(eventsConfig.scoreChanged); // initiate Emit event
     }
@@ -45,20 +45,23 @@ module.exports = class sportsManagement extends EventEmitter{
 
     // callback functions
     showScoreChanged() {
-        console.log(`${this.name} now has ${this.stats} points remaining`);
-        logger.push(`${this.name} now has ${this.stats} points remaining`);
+        var scoreChangedMsg = `${this.name} now has ${this.stats} points remaining`;
+        console.log(scoreChangedMsg);
+        logger.push(scoreChangedMsg);
         console.log('------------------');
     }
 
     showScoreNotChanged() {
-        console.log(`Penalty is too high than ${this.name}'s original score, remains with ${this.stats} points`);
-        logger.push(`Penalty is too high than ${this.name}'s original score, remains with ${this.stats} points`);
+        var scoreNotChangedMsg = `Penalty is too high than ${this.name}'s original score, remains with ${this.stats} points`;
+        console.log(scoreNotChangedMsg);
+        logger.push(scoreNotChangedMsg);
         console.log('------------------');
     }
 
     showSportsGenre() {
-        console.log(`Name: ${this.name}, Genre: ${this.sportsGenre} with the score of: ${this.stats}`);
-        logger.push(`Name: ${this.name}, Genre: ${this.sportsGenre} with the score of: ${this.stats}`);
+        var infoMsg = `Name: ${this.name}, Genre: ${this.sportsGenre} with the score of: ${this.stats}`;
+        console.log(infoMsg);
+        logger.push(infoMsg);
         console.log('------------------');
     }
 };

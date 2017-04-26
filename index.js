@@ -3,11 +3,12 @@
 // create a global logger
 var logger = Array();
 exports.logger = logger;
-
-var athlete = require('./athlete'),
+var http = require('http'),
+    express = require('express'),
+    athlete = require('./athlete'),
     eventsConfig = require('./config').events;
 
-// var app = express();
+var app = express();
 var sm = new athlete('Tomer', 'Snowboard', 13);
 var sm2 = new athlete('Papushe','UFC', 24);
 var sm3 = new athlete('Naor','Rugby', 7);
@@ -30,3 +31,9 @@ sm3.removeScore(5);
 sm.getSportGenre();
 sm2.getSportGenre();
 sm3.getSportGenre();
+
+app.get('/', function(req, res) {
+    res.send(JSON.stringify(logger)); // display the log array as JSON
+});
+
+http.createServer(app).listen(8080);

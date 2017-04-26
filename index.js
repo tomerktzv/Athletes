@@ -5,8 +5,6 @@ var logger = Array();
 exports.logger = logger;
 
 var athlete = require('./athlete'),
-    // http = require('http'),
-    // express = require('express'),
     eventsConfig = require('./config').events;
 
 // var app = express();
@@ -32,10 +30,3 @@ sm3.removeScore(5);
 sm.getSportGenre();
 sm2.getSportGenre();
 sm3.getSportGenre();
-
-// create localhost server
-// app.get('/', function(req, res) {
-//     res.send(JSON.stringify(logger)); // display the log array as JSON
-// });
-//
-// http.createServer(app).listen(8080);

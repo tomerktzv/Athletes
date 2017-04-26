@@ -5,11 +5,11 @@ var logger = Array();
 exports.logger = logger;
 
 var athlete = require('./athlete'),
-    http = require('http'),
-    express = require('express'),
+    // http = require('http'),
+    // express = require('express'),
     eventsConfig = require('./config').events;
 
-var app = express();
+// var app = express();
 var sm = new athlete('Tomer', 'Snowboard', 13);
 var sm2 = new athlete('Papushe','UFC', 24);
 var sm3 = new athlete('Naor','Rugby', 7);
@@ -34,8 +34,8 @@ sm2.getSportGenre();
 sm3.getSportGenre();
 
 // create localhost server
-app.get('/', function(req, res) {
-    res.send(JSON.stringify(logger)); // display the log array as JSON
-});
-
-http.createServer(app).listen(8080);
+// app.get('/', function(req, res) {
+//     res.send(JSON.stringify(logger)); // display the log array as JSON
+// });
+//
+// http.createServer(app).listen(8080);

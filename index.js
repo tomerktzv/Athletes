@@ -3,10 +3,11 @@
 // create a global logger
 var logger = Array();
 exports.logger = logger;
-var http = require('http'),
+const http = require('http'),
     express = require('express'),
     athlete = require('./athlete'),
-    eventsConfig = require('./config').events;
+    eventsConfig = require('./config').events,
+    port = process.env.PORT || 8080;
 
 var app = express();
 var sm = new athlete('Tomer', 'Snowboard', 13);
@@ -36,4 +37,4 @@ app.get('/', function(req, res) {
     res.send(JSON.stringify(logger)); // display the log array as JSON
 });
 
-http.createServer(app).listen(8080);
+http.createServer(app).listen(port);

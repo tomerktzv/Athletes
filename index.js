@@ -13,7 +13,7 @@ var app = express();
 var sm = new athlete('Tomer', 'Snowboard', 13);
 var sm2 = new athlete('Papushe','UFC', 24);
 var sm3 = new athlete('Naor','Rugby', 7);
-
+//
 //catch emit events with callback functions
 sm.on(eventsConfig.scoreChanged, sm.showScoreChanged);
 sm.on(eventsConfig.scoreNotChanged, sm.showScoreNotChanged);
